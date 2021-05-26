@@ -71,6 +71,9 @@ Route::get('/', 'Frontend\HomeController@view')->name('home');
 
 
 //Route::prefix('home')->group(function () {
+    Route::get('/login_check', 'Frontend\CheckoutController@login_check')->name('login_check');
+    Route::post('/customer_reg', 'Frontend\CheckoutController@customer_reg')->name('customer_reg');
+
 
     Route::get('/details/{id}', 'Frontend\HomeController@productDetails')->name('product.details');
     Route::post('/add_to_cart', 'Frontend\CartController@add')->name('add_to_cart');
@@ -85,3 +88,6 @@ Route::get('/', 'Frontend\HomeController@view')->name('home');
     // Route::post('/update/{id}', 'ProductController@update')->name('product.update');
     // Route::post('/store', 'ProductController@store')->name('product.store');
 //});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
