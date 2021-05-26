@@ -191,7 +191,7 @@ use Illuminate\Support\Facades\Auth;
 									<div class="dropdown-cart-header">
 										<span>{{$qtn}} Items</span>
 
-										<a href="{{route('show_cart')}}" class="float-right">View Cart</a>
+										<a href="#" class="float-right">View Cart</a>
 									</div><!-- End .dropdown-cart-header -->
 
 									<?php
