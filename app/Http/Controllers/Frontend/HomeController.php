@@ -18,10 +18,12 @@ class HomeController extends Controller
      
        
     }
-    public function productDetails()
+    public function productDetails($id)
     {
 
-        dd('done');
+        $data['allData'] = Product::find($id);
+        //dd($data['allData'] );
+        return view('pages.details', $data);
        
      
        

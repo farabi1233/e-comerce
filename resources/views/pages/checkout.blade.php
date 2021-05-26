@@ -3,6 +3,6 @@
 
 
 @section('content')
-
+<b>checkout</b>
 
 @endsection

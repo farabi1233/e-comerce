@@ -72,7 +72,12 @@ Route::get('/', 'Frontend\HomeController@view')->name('home');
 
 //Route::prefix('home')->group(function () {
 
-    Route::get('/details/{id}', 'Backend\HomeController@productDetails')->name('product.details');
+    Route::get('/details/{id}', 'Frontend\HomeController@productDetails')->name('product.details');
+    Route::post('/add_to_cart', 'Frontend\CartController@add')->name('add_to_cart');
+    Route::get('/show_cart', 'Frontend\CartController@show_cart')->name('show_cart');
+    Route::get('/cart/item_remove{id}', 'Frontend\CartController@item_remove')->name('item_remove');
+    Route::get('/checkout', 'Frontend\CartController@checkout')->name('checkout');
+
     // Route::get('/view', 'ProductController@view')->name('product.view');
     // Route::get('/add', 'ProductController@add')->name('product.add');
     // Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
