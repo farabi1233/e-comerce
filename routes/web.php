@@ -64,3 +64,19 @@ Route::prefix('admin')->namespace('Backend\Admin')->group(function () {
        });
     });
 });
+
+
+// Fornt site
+Route::get('/', 'Frontend\HomeController@view')->name('home');
+
+
+//Route::prefix('home')->group(function () {
+
+    Route::get('/details/{id}', 'Backend\HomeController@productDetails')->name('product.details');
+    // Route::get('/view', 'ProductController@view')->name('product.view');
+    // Route::get('/add', 'ProductController@add')->name('product.add');
+    // Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
+    // Route::get('/delete/{id}', 'ProductController@delete')->name('product.delete');
+    // Route::post('/update/{id}', 'ProductController@update')->name('product.update');
+    // Route::post('/store', 'ProductController@store')->name('product.store');
+//});
