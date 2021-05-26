@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Model\customer;
 use App\User;
 use Illuminate\Contracts\Session\Session;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
@@ -30,11 +30,13 @@ class CheckoutController extends Controller
         $user->password = bcrypt($request->password);
         $user->mobile = $request->phone;
         $user->save();
-        return redirect()->route('home');
+        return redirect()->route('mainpage');
     }
 
     public function checkout(){
+        dd('hello');
         
-        return view('pages.checkout');
+
+        //return view('pages.checkout');
 }
 }

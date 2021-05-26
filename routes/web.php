@@ -67,7 +67,7 @@ Route::prefix('admin')->namespace('Backend\Admin')->group(function () {
 
 
 // Fornt site
-Route::get('/', 'Frontend\HomeController@view')->name('home');
+Route::get('/', 'Frontend\HomeController@view')->name('mainpage');
 
 
 //Route::prefix('home')->group(function () {
