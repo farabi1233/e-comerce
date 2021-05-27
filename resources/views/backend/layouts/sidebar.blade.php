@@ -66,6 +66,16 @@
 </li>
 
 <hr class="sidebar-divider">
+<li class="nav-item">
+
+    <a class="nav-link collapsed" href="{{ route('order.view') }}" >
+        <i class="fas fa-fw fa-cog"></i>
+        <span>View Order</span>
+    </a>
+    
+</li>
+
+<hr class="sidebar-divider">
 
 
 

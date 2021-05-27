@@ -62,6 +62,15 @@ Route::prefix('admin')->namespace('Backend\Admin')->group(function () {
             Route::post('/update/{id}', 'ProductController@update')->name('product.update');
             Route::post('/store', 'ProductController@store')->name('product.store');
        });
+        Route::prefix('order')->group(function () {
+
+
+            Route::get('/view', 'OrderController@view')->name('order.view');
+            Route::get('/edit/{id}', 'OrderController@edit')->name('order.edit');
+            Route::get('/delete/{id}', 'OrderController@delete')->name('order.delete');
+            Route::post('/update/{id}', 'OrderController@update')->name('order.update');
+        
+       });
     });
 });
 

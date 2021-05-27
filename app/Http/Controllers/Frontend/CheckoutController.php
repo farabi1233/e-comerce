@@ -110,14 +110,19 @@ $oddata= array();
 foreach($contents as $value ){
     
     $oddata['order_id']= $order_id;
+    $oddata['payment_id']= $payment_id;
+    $oddata['customer_id']= $customer_id;
+    $oddata['shiping_id']= $shiping_id;
     $oddata['product_id']=$value->id;
     $oddata['product_name']=$value->name;
     $oddata['product_price']=$value->price;
     $oddata['product_seles_quantity']=$value->quantity;
     $oddata['status']=0;
     DB::table('order_details')->insert($oddata);
+    Cart::remove($value->id);
 
 }
+
 return redirect()->route('thanks');
         
     }
