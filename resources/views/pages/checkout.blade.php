@@ -63,13 +63,7 @@ $qtn = Cart::getTotalQuantity();
                                 <input name="address" type="text" class="form-control" required>
                             </div><!-- End .form-group -->
                             <table class="table table-step-shipping">
-                        <tbody>
-
-                            <tr>
-                                <td><input type="radio" name="shipping_method"  value="shipping_method" require></td>
-                                <td><strong>Cash On Delivary</strong></td>
-
-                            </tr>
+                        
 
 
 
@@ -86,13 +80,7 @@ $qtn = Cart::getTotalQuantity();
             </form>
             </li>
 
-            <li>
-                <div class="checkout-step-shipping">
-                    <h2 class="step-title">Shipping Methods</h2>
-
-                    
-                </div><!-- End .checkout-step-shipping -->
-            </li>
+            
             </ul>
         </div><!-- End .col-lg-8 -->
 

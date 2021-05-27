@@ -81,7 +81,8 @@ Route::get('/', 'Frontend\HomeController@view')->name('mainpage');
     Route::post('/add_to_cart', 'Frontend\CartController@add')->name('add_to_cart');
     Route::get('/show_cart', 'Frontend\CartController@show_cart')->name('show_cart');
     Route::get('/cart/item_remove{id}', 'Frontend\CartController@item_remove')->name('item_remove');
-    Route::get('/checkout', 'Frontend\CartController@checkout')->name('checkout');
+    Route::get('/checkout', 'Frontend\CartController@checkout')->name('checkout');                     
+                        
     
 
     //Shiping Data
@@ -98,3 +99,4 @@ Route::get('/', 'Frontend\HomeController@view')->name('mainpage');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/thanks', 'Frontend\CheckoutController@thanks')->name('thanks'); 

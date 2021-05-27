@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
-
+use Illuminate\Contracts\Session\Session;
 use App\Http\Controllers\Controller;
 use App\Model\Category;
 use App\Model\Product;
@@ -25,8 +25,10 @@ class HomeController extends Controller
     {
 
         $data['allData'] = Product::find($id);
+       
         //dd($data['allData'] );
         return view('pages.details', $data);
+     
        
      
        
