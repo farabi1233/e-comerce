@@ -58,4 +58,5 @@ class CartController extends Controller
         return view('pages.checkout');
         
     }
+    
 }

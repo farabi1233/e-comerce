@@ -2,12 +2,22 @@
 
 @section('content')
 <?php
+
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
+
 $contents = Cart::getContent();
-$qtn = Cart::getTotalQuantity()
+$qtn = Cart::getTotalQuantity();
 //	echo "<pre>";
 //	print_r($contents);
 
+
+
+
 ?>
+
+
+
 <main class="main">
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
         <div class="container">
@@ -29,31 +39,47 @@ $qtn = Cart::getTotalQuantity()
             <div class="col-lg-8">
                 <ul class="checkout-steps">
                     <li>
-                        <h2 class="step-title">Shipping Address</h2>
+                        <h2 class="step-title">Shipping Details</h2>
 
 
 
-                        <form action="#">
+                        <form action="{{ route('save_shiping_details')}}" method="POST">
+                            @csrf
                             <div class="form-group required-field">
-                                <input name="name" value="{{Auth::user()->id}}" type="hidden" class="form-control" required>
+                                <input name="user_id" value="{{Auth::user()->id}}" type="hidden" class="form-control" required>
                                 <label>Name </label>
-                                <input name="name" value="{{Auth::user()->name}}" type="text" class="form-control" required>
+                                <input name="user_name" value="{{Auth::user()->name}}" type="text" class="form-control" required>
                             </div><!-- End .form-group -->
                             <div class="form-group required-field">
                                 <label>Phone </label>
-                                <input phone="mobile" value="{{Auth::user()->mobile}}" type="text" class="form-control" required>
+                                <input name="mobile" value="{{Auth::user()->mobile}}" type="text" class="form-control" required>
                             </div><!-- End .form-group -->
                             <div class="form-group required-field">
                                 <label>Email </label>
-                                <input phone="email" value="{{Auth::user()->email}}" type="text" class="form-control" required>
+                                <input name="email" value="{{Auth::user()->email}}" type="text" class="form-control" required>
                             </div><!-- End .form-group -->
                             <div class="form-group required-field">
                                 <label>Address </label>
-                                <input phone="address" type="text" class="form-control" required>
+                                <input name="address" type="text" class="form-control" required>
                             </div><!-- End .form-group -->
+                            <table class="table table-step-shipping">
+                        <tbody>
+
+                            <tr>
+                                <td><input type="radio" name="shipping_method"  value="shipping_method" require></td>
+                                <td><strong>Cash On Delivary</strong></td>
+
+                            </tr>
 
 
 
+                        </tbody>
+                    </table>
+
+                            <div class="row justify-content-center">
+
+                                <input type="submit" class="btn btn-primary" value="Done">
+                            </div><!-- End .form-group -->
 
 
             </div><!-- End .form-group -->
@@ -64,19 +90,7 @@ $qtn = Cart::getTotalQuantity()
                 <div class="checkout-step-shipping">
                     <h2 class="step-title">Shipping Methods</h2>
 
-                    <table class="table table-step-shipping">
-                        <tbody>
-                        
-                            <tr>
-                                <td><input type="radio" name="shipping-method" value="flat"></td>
-                                <td><strong>Cash On Delivary</strong></td>
-                                
-                            </tr>
-                           
-
-                            
-                        </tbody>
-                    </table>
+                    
                 </div><!-- End .checkout-step-shipping -->
             </li>
             </ul>
@@ -94,14 +108,14 @@ $qtn = Cart::getTotalQuantity()
                     <table class="table table-mini-cart">
                         <tbody>
 
-                        @foreach($contents as $key => $value)
-                        <?php
-							$image = $value->attributes->image;
-							//dd($image);
-							$total = ($value->price)*($value->quantity);
-								
-								
-								?>
+                            @foreach($contents as $key => $value)
+                            <?php
+                            $image = $value->attributes->image;
+                            //dd($image);
+                            $total = ($value->price) * ($value->quantity);
+
+
+                            ?>
 
                             <tr>
                                 <td class="product-col">
@@ -121,8 +135,8 @@ $qtn = Cart::getTotalQuantity()
                                 <td class="price-col">${{$total}}</td>
                             </tr>
 
-                          
-								@endforeach
+
+                            @endforeach
                         </tbody>
                     </table>
                 </div><!-- End #order-cart-section -->
@@ -130,13 +144,7 @@ $qtn = Cart::getTotalQuantity()
         </div><!-- End .col-lg-4 -->
     </div><!-- End .row -->
 
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="checkout-steps-action">
-                <a href="checkout-review.html" class="btn btn-primary float-right">NEXT</a>
-            </div><!-- End .checkout-steps-action -->
-        </div><!-- End .col-lg-8 -->
-    </div><!-- End .row -->
+
     </div><!-- End .container -->
 </main><!-- End .main -->
 

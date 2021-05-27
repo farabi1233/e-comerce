@@ -93,7 +93,7 @@ use Illuminate\Support\Facades\Auth;
 									<li><a href="#">Our Stores</a></li>
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="contact.html">Contact</a></li>
-									<li><a href="#">LogIn</a></li>
+									<li><a href="{{ route('login_check')}}">LogIn</a></li>
 									 
 									<li><a href="#" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer">Logout</a>
@@ -158,7 +158,7 @@ use Illuminate\Support\Facades\Auth;
 						<button class="mobile-menu-toggler" type="button">
 							<i class="icon-menu"></i>
 						</button>
-						<a href="{{route('home')}}" class="logo">
+						<a href="{{route('mainpage')}}" class="logo">
 							<img src="{{ asset('frontend/assets/images/logo.png') }}" alt="Porto Logo">
 						</a>
 					</div><!-- End .header-center -->
@@ -169,7 +169,7 @@ use Illuminate\Support\Facades\Auth;
 							<h6 class="pt-1 line-height-1 pr-2">Call us now<a href="tel:#" class="d-block text-dark pt-1 font1">+123 5678 890</a></h6>
 						</div><!-- End .header-contact -->
 
-						<a href="login.html" class="header-icon login-link pl-1"><i class="icon-user-2"></i></a>
+						<a href="#" class="header-icon login-link pl-1"><i class="icon-user-2"></i></a>
 
 						<a href="#" class="header-icon pl-1 pr-2"><i class="icon-wishlist-2"></i></a>
 
@@ -191,7 +191,7 @@ use Illuminate\Support\Facades\Auth;
 									<div class="dropdown-cart-header">
 										<span>{{$qtn}} Items</span>
 
-										<a href="#" class="float-right">View Cart</a>
+										<a href="{{ route('show_cart')}}" class="float-right">View Cart</a>
 									</div><!-- End .dropdown-cart-header -->
 
 									<?php
@@ -245,7 +245,7 @@ use Illuminate\Support\Facades\Auth;
 									</div><!-- End .dropdown-cart-total -->
 
 									<div class="dropdown-cart-action">
-										<a href="checkout-shipping.html" class="btn btn-dark btn-block">Checkout</a>
+										<a href="{{ route('checkout')}}" class="btn btn-dark btn-block">Checkout</a>
 									</div><!-- End .dropdown-cart-total -->
 								</div><!-- End .dropdownmenu-wrapper -->
 							</div><!-- End .dropdown-menu -->

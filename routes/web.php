@@ -71,16 +71,23 @@ Route::get('/', 'Frontend\HomeController@view')->name('mainpage');
 
 
 //Route::prefix('home')->group(function () {
+
+    //Customer Login Reg
     Route::get('/login_check', 'Frontend\CheckoutController@login_check')->name('login_check');
     Route::post('/customer_reg', 'Frontend\CheckoutController@customer_reg')->name('customer_reg');
-
-
+    
+    //Cart and product View
     Route::get('/details/{id}', 'Frontend\HomeController@productDetails')->name('product.details');
     Route::post('/add_to_cart', 'Frontend\CartController@add')->name('add_to_cart');
     Route::get('/show_cart', 'Frontend\CartController@show_cart')->name('show_cart');
     Route::get('/cart/item_remove{id}', 'Frontend\CartController@item_remove')->name('item_remove');
     Route::get('/checkout', 'Frontend\CartController@checkout')->name('checkout');
+    
 
+    //Shiping Data
+    Route::post('/save_shiping_details', 'Frontend\CheckoutController@save_shiping_details')->name('save_shiping_details');
+    Route::get('/payment', 'Frontend\CheckoutController@payment')->name('payment');
+    Route::post('/order_place', 'Frontend\CheckoutController@order_place')->name('order_place');
     // Route::get('/view', 'ProductController@view')->name('product.view');
     // Route::get('/add', 'ProductController@add')->name('product.add');
     // Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
