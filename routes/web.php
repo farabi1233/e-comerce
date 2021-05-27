@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Auth::routes();
+
 
 
 Route::prefix('admin')->namespace('Backend\Admin')->group(function () {
@@ -74,7 +74,7 @@ Route::prefix('admin')->namespace('Backend\Admin')->group(function () {
     });
 });
 
-
+Auth::routes();
 // Fornt site
 Route::get('/', 'Frontend\HomeController@view')->name('mainpage');
 

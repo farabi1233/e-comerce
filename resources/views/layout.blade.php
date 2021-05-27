@@ -95,11 +95,16 @@ use Illuminate\Support\Facades\Auth;
 									<li><a href="contact.html">Contact</a></li>
 									<li><a href="{{ route('login_check')}}">LogIn</a></li>
 									 
-									<li><a href="#" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer">Logout</a>
-                        <form id="logout-form" action="#" method="POST" style="display: none;">
-                            @csrf
-                        </form></li> 
+									<li><a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                        </li> 
 									
 									
 
