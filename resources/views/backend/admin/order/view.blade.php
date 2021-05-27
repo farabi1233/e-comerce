@@ -66,14 +66,32 @@
                                         <td>{{ $order->product_seles_quantity}}</td>
                                         <td>{{ $order->product_price}}</td>
                                         <td>{{($order->product_seles_quantity)*($order->product_price)}}</td>
-                                        <td>
+                                        
+                                        <?php
+                                        if($order->status == 1){
+                                            ?>
+                                        <td><b>Delivered</b></td>
+                                        <?php
+                                        }
+                                        else{
+                                            ?>
+                                            <td>Pending</td>
+                                            <?php
+                                        }
+
+                                        ?>
                                             
-                                        </td>
-                                        <td>image</td>
-                                        <td>action</td>
+                                        
+                                        <td><img src="{{(!empty($order['product_class'] ['image']))? url('upload/product_images/'.$order['product_class'] ['image']):url('upload/no_image.jpg') }}" style= padding: 5px;background: #EFEE03;float: left;margin-right: 10px; width="50" height="60" "></td>
+                                        
                                         
                                     
-                                      
+                                        <td>
+                                                <a class="btn btn-sm btn-primary" href="{{ route('order.edit',$order->id)}}"> <i class="fa fa-thumbs-up"></i> Delevary</a>
+                                               
+                                               
+                                                <a class="btn btn-sm btn-danger" id="delete" href="{{ route('order.delete',$order->id)}}"> <i class="fa fa-trash"></i>   Delete</a>
+                                            </td>
 
                                        
                                     

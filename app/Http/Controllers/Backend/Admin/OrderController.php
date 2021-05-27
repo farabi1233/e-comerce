@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Model\Order;
 use App\Model\OrderDetails;
 use Illuminate\Http\Request;
 
@@ -20,35 +21,23 @@ class OrderController extends Controller
 
     public function edit($id)
     {
-
+        $data = OrderDetails::find($id);
+        $data->status = 1;
       
-        
-        $editData = Category::find($id);
-
-        return view('backend.admin.category.edit', compact('editData'));
-    }
-    public function update(Request $request,$id)
-    {
-        $request->validate([
-            'name' => 'required|unique:categories,name',
-
-            
-        ]);
-        
-        $data = Category::find($id);
-        $data->name = $request->name;
-        
-
         $data->save();
-        return redirect()->route('category.view')->with('success', 'Edit Category Successfully');
+        return redirect()->route('order.view')->with('success', ' Successfully');
+
+        
     }
+   
 
     public function delete($id)
     {
-        $class = Category::find($id);
 
+        
+        $order = OrderDetails::find($id);
 
-        $class->delete();
-        return redirect()->route('category.view')->with('success', 'Year Deleted Successfully');
+        $order->delete();
+        return redirect()->route('order.view')->with('success', 'Order Deleted Successfully');
     }
 }
