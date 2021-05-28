@@ -80,12 +80,14 @@
                 <hr class="divider">
                 <form method="POST" action="{{ route('add_to_cart')}} " id="myForm" enctype="multipart/form-data">
                      @csrf
+                     <input class="" value="{{ $allData->id}}" type="hidden" name="product_id">
                     <div class="product-action">
                         <div class="product-single-qty">
                             
                             <input name="qty" class="horizontal-quantity form-control" type="text">
-                            <input class="horizontal-quantity form-control" value="{{ $allData->id}}" type="hidden" name="product_id">
                         </div><!-- End .product-single-qty -->
+                       
+
 
                         <button type="submit" value="submit" style="margin-left:100px;" class="btn btn-dark add-cart icon-shopping-cart" >Add to Cart</button>
                     </div><!-- End .product-action -->

@@ -87,16 +87,18 @@ Route::get('/', 'Frontend\HomeController@view')->name('mainpage');
     
     //Cart and product View
     Route::get('/details/{id}', 'Frontend\HomeController@productDetails')->name('product.details');
+    Route::get('/review/{id}', 'Frontend\HomeController@productReview')->name('product.review');
+    Route::post('/review/store', 'Frontend\HomeController@productReviewStore')->name('product.review.store');
     Route::post('/add_to_cart', 'Frontend\CartController@add')->name('add_to_cart');
     Route::get('/show_cart', 'Frontend\CartController@show_cart')->name('show_cart');
     Route::get('/cart/item_remove{id}', 'Frontend\CartController@item_remove')->name('item_remove');
-    Route::get('/checkout', 'Frontend\CartController@checkout')->name('checkout');                     
+    Route::get('/checkout', 'Frontend\CartController@checkout')->name('checkout')->middleware('user');                     
                         
     
 
     //Shiping Data
     Route::post('/save_shiping_details', 'Frontend\CheckoutController@save_shiping_details')->name('save_shiping_details');
-    Route::get('/payment', 'Frontend\CheckoutController@payment')->name('payment');
+    Route::get('/payment', 'Frontend\CheckoutController@payment')->name('payment')->middleware('user');
     Route::post('/order_place', 'Frontend\CheckoutController@order_place')->name('order_place');
     // Route::get('/view', 'ProductController@view')->name('product.view');
     // Route::get('/add', 'ProductController@add')->name('product.add');

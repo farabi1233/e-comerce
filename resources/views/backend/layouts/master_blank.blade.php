@@ -23,6 +23,9 @@
     {{-- Sweet Alert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     @toastr_css
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -50,6 +53,35 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('backend/js/demo/chart-pie-demo.js') }}"></script>
+    @if(session()->has('success'))
+        <script type="text/javascript">
+            $(function() {
+
+                $.notify("{{session()->get('success')}}", {
+                    globalPositoin: 'top right',
+                    className: 'success'
+                })
+
+            })
+        </script>
+     
+
+        @endif
+      
+        @if(session()->has('error'))
+        <script type="text/javascript">
+            $(function() {
+
+                $.notify("{{session()->get('error')}}", {
+                    globalPositoin: 'top right',
+                    className: 'error'
+                })
+
+            })
+        </script> 
+  @endif
+
+
 
 </body>
 

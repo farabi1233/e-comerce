@@ -7,6 +7,8 @@
 <?php
 
 use App\Model\Product;
+use App\Model\Review;
+use Illuminate\Support\Facades\DB;
 
 
 ?>
@@ -16,13 +18,14 @@ use App\Model\Product;
 	<?php
 	$i = 0;
 	$j = 0;
-	$t=0;
+	$t = 0;
+
 	$products = Product::where('category_id', $category->id)->get();
 
 	?>
 
 	<div class="col-md-4 col-sm-6 pb-5">
-	@foreach($products as $key => $count)
+		@foreach($products as $key => $count)
 		<?php
 		$j = $j + 1;
 		?>
@@ -39,6 +42,11 @@ use App\Model\Product;
 
 
 		@foreach($products as $key => $product)
+		<?php
+		$r = 0;
+		$rsum = 0;
+		$reviews = DB::Table('reviews')->select('review')->where('product_id', $product->id)->get();
+		?>
 		@if($i>=3)
 		<div class="product-default left-details product-widget mb-2">
 			<figure>
@@ -53,12 +61,41 @@ use App\Model\Product;
 				<h2 class="product-title">
 					<a class="" href="{{ route('product.details',$product->id)}}">{{ $product->name}}</a>
 				</h2>
+
+
+
+				@foreach($reviews as $review)
+				<?php
+				$r = $r + 1;
+				$rsum = $rsum + $review->review;
+
+				?>
+				<?php
+				if ($r > 0) {
+					$avg = $rsum / $r;
+				}
+				?>
+
+
+
+				@endforeach
+
+				<h1>{{$avg}}</h1>
 				<div class="ratings-container">
 					<div class="product-ratings">
-						<span class="ratings" style="width:100%"></span><!-- End .ratings -->
-						<span class="tooltiptext tooltip-top">5.00</span>
+
+						<a class="" href="{{ route('product.review',$product->id)}}">
+
+
+
+							<span class="ratings" style="width:{{$avg}}%"></span><!-- End .ratings -->
+
+						</a>
 					</div><!-- End .product-ratings -->
 				</div><!-- End .product-container -->
+
+
+
 				<div class="price-box">
 					<del class="old-price">$59.00</del>
 					<span class="product-price">${{ $product->price}}</span>
@@ -66,14 +103,14 @@ use App\Model\Product;
 			</div><!-- End .product-details -->
 		</div>
 		@endif
-<?php
-$t=$t+1;
+		<?php
+		$t = $t + 1;
 
- if ($t == 3) break;
-	?>	
+		if ($t == 3) break;
+		?>
 		@endforeach
-	
-		
+
+
 
 
 

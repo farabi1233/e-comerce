@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Auth;
 ?>
 <!DOCTYPE html>
@@ -94,21 +95,25 @@ use Illuminate\Support\Facades\Auth;
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="contact.html">Contact</a></li>
 									<li><a href="{{ route('login_check')}}">LogIn</a></li>
-									 
-									<li><a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+
+									<?php if (Auth::check()) { ?>
+
+										<li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+												{{ __('Logout') }}
+											</a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                        </li> 
-									
-									
+											<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+												@csrf
+											</form>
+										</li>
 
-									
+									<?php
+									}
+
+									?>
+
+
 								</ul>
 							</div><!-- End .header-menu -->
 						</div><!-- End .header-dropown -->
@@ -218,8 +223,8 @@ use Illuminate\Support\Facades\Auth;
 												<h4 class="product-title">
 													<a href="product.html">{{$value->name}}</a>
 												</h4>
-								<span class="cart-product-info">
-													<span   class="cart-product-qty">{{$value->quantity}}</span>
+												<span class="cart-product-info">
+													<span class="cart-product-qty">{{$value->quantity}}</span>
 													x ${{$value->price}}
 												</span>
 											</div><!-- End .product-details -->
@@ -228,7 +233,7 @@ use Illuminate\Support\Facades\Auth;
 												<a href="product.html" class="product-image">
 													<img src="{{(!empty($image))? url('upload/product_images/'.$image):url('upload/no_image.jpg') }}" alt="product" width="80" height="80">
 												</a>
-											
+
 												<a href="{{ route('item_remove',$value->id)}}" class="btn-remove icon-cancel" title="Remove Product"></a>
 											</figure>
 										</div><!-- End .product -->
@@ -237,10 +242,10 @@ use Illuminate\Support\Facades\Auth;
 									</div><!-- End .cart-product -->
 
 									<?php
-								$sum = $sum + $total;
+									$sum = $sum + $total;
 
-								?>
-								@endforeach
+									?>
+									@endforeach
 
 
 									<div class="dropdown-cart-total">
@@ -638,7 +643,7 @@ use Illuminate\Support\Facades\Auth;
 		</div><!-- End .mobile-menu-wrapper -->
 	</div><!-- End .mobile-menu-container -->
 
-	
+
 
 
 
@@ -651,7 +656,7 @@ use Illuminate\Support\Facades\Auth;
 
 	<!-- Main JS File -->
 	<script src="{{ asset('frontend/assets/js/main.min.js') }}"></script>
-	
+
 </body>
 
 <!-- Mirrored from portotheme.com/html/porto_ecommerce/demo_9/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 13 May 2021 15:59:48 GMT -->
