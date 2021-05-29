@@ -74,7 +74,7 @@ Route::prefix('admin')->namespace('Backend\Admin')->group(function () {
     });
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 // Fornt site
 Route::get('/', 'Frontend\HomeController@view')->name('mainpage');
 
@@ -86,7 +86,7 @@ Route::get('/', 'Frontend\HomeController@view')->name('mainpage');
     Route::post('/customer_reg', 'Frontend\CheckoutController@customer_reg')->name('customer_reg');
     
     //Cart and product View
-    Route::get('/details/{id}', 'Frontend\HomeController@productDetails')->name('product.details');
+    Route::get('/details/{id}', 'Frontend\HomeController@productDetails')->name('product.details')->middleware('verified');
     Route::get('/review/{id}', 'Frontend\HomeController@productReview')->name('product.review');
     Route::post('/review/store', 'Frontend\HomeController@productReviewStore')->name('product.review.store');
     Route::post('/add_to_cart', 'Frontend\CartController@add')->name('add_to_cart');
@@ -98,7 +98,7 @@ Route::get('/', 'Frontend\HomeController@view')->name('mainpage');
 
     //Shiping Data
     Route::post('/save_shiping_details', 'Frontend\CheckoutController@save_shiping_details')->name('save_shiping_details');
-    Route::get('/payment', 'Frontend\CheckoutController@payment')->name('payment')->middleware('user');
+    Route::get('/payment', 'Frontend\CheckoutController@payment')->name('payment')->middleware('verified');
     Route::post('/order_place', 'Frontend\CheckoutController@order_place')->name('order_place');
     // Route::get('/view', 'ProductController@view')->name('product.view');
     // Route::get('/add', 'ProductController@add')->name('product.add');
@@ -111,3 +111,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/thanks', 'Frontend\CheckoutController@thanks')->name('thanks'); 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
