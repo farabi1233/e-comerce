@@ -80,7 +80,7 @@ use Illuminate\Support\Facades\DB;
 
 				@endforeach
 
-				<h1>{{$avg}}</h1>
+				
 				<div class="ratings-container">
 					<div class="product-ratings">
 

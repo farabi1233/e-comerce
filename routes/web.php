@@ -86,20 +86,20 @@ Route::get('/', 'Frontend\HomeController@view')->name('mainpage');
     Route::post('/customer_reg', 'Frontend\CheckoutController@customer_reg')->name('customer_reg');
     
     //Cart and product View
-    Route::get('/details/{id}', 'Frontend\HomeController@productDetails')->name('product.details')->middleware('verified');
-    Route::get('/review/{id}', 'Frontend\HomeController@productReview')->name('product.review');
-    Route::post('/review/store', 'Frontend\HomeController@productReviewStore')->name('product.review.store');
+    Route::get('/details/{id}', 'Frontend\HomeController@productDetails')->name('product.details');
+    Route::get('/review/{id}', 'Frontend\HomeController@productReview')->name('product.review')->middleware('verified');
+    Route::post('/review/store', 'Frontend\HomeController@productReviewStore')->name('product.review.store')->middleware('verified');
     Route::post('/add_to_cart', 'Frontend\CartController@add')->name('add_to_cart');
     Route::get('/show_cart', 'Frontend\CartController@show_cart')->name('show_cart');
     Route::get('/cart/item_remove{id}', 'Frontend\CartController@item_remove')->name('item_remove');
-    Route::get('/checkout', 'Frontend\CartController@checkout')->name('checkout')->middleware('user');                     
+    Route::get('/checkout', 'Frontend\CartController@checkout')->name('checkout')->middleware('verified');;                     
                         
     
 
     //Shiping Data
-    Route::post('/save_shiping_details', 'Frontend\CheckoutController@save_shiping_details')->name('save_shiping_details');
+    Route::post('/save_shiping_details', 'Frontend\CheckoutController@save_shiping_details')->name('save_shiping_details')->middleware('verified');
     Route::get('/payment', 'Frontend\CheckoutController@payment')->name('payment')->middleware('verified');
-    Route::post('/order_place', 'Frontend\CheckoutController@order_place')->name('order_place');
+    Route::post('/order_place', 'Frontend\CheckoutController@order_place')->name('order_place')->middleware('verified');
     // Route::get('/view', 'ProductController@view')->name('product.view');
     // Route::get('/add', 'ProductController@add')->name('product.add');
     // Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');

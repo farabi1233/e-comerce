@@ -18,6 +18,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('frontend/assets/images/icons/favicon.ico') }}">
+
+	
+
+	<!-- Plugins CSS File -->
+	<link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
+
+	<!-- Main CSS File -->
+	<!-- <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.min.css') }}"> -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/vendor/fontawesome-free/css/all.min.css') }}">
 </head>
 <body>
     <div id="app">

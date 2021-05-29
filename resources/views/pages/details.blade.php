@@ -48,13 +48,7 @@
             <div class="col-md-7 product-single-details">
                 <h1 class="product-title">{{ $allData->name}}</h1>
 
-                <div class="ratings-container">
-                    <div class="product-ratings">
-                        <span class="ratings" style="width:60%"></span><!-- End .ratings -->
-                    </div><!-- End .product-ratings -->
-
-                    <a href="#" class="rating-link">( 6 Reviews )</a>
-                </div><!-- End .ratings-container -->
+               
 
                 <hr class="short-divider">
 
